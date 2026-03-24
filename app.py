@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
+import os
 
 app = Flask(__name__)
 
@@ -21,18 +22,18 @@ def home():
         }
     }
 
-    # 🔥 ENG MUHIM QATOR
     t = translations.get(lang, translations["en"])
-
-    # 🔥 ENG MUHIM QATOR
     return render_template("index.html", t=t)
-import os
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
-    from flask import send_from_directory
 
+# 🔥 ROBOTS ROUTE (MUHIM)
 @app.route('/robots.txt')
 def robots():
     return send_from_directory('.', 'robots.txt')
+
+
+# 🔥 HAR DOIM OXIRIDA BO‘LADI
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
+    
